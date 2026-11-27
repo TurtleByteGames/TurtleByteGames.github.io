@@ -1,10 +1,42 @@
+/*
+ * Marca Turtle Byte Games (copia de marca/marca.css del repo del estudio).
+ * Solo 5 colores; el sitio es solo claro (fondo Arena). Tipografías alojadas acá, con su licencia OFL en tipografias/.
+ */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url('tipografias/space-grotesk-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url('tipografias/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+}
+
 :root {
-  --bg: #14161f;
-  --panel: #1f2230;
-  --text: #f1f2f8;
-  --muted: #b8bdd6;
-  --accent: #ffe27a;
-  color-scheme: dark;
+  --tbg-verde: #5FA845;
+  --tbg-marron: #A06A3B;
+  --tbg-marron-oscuro: #5A381E;
+  --tbg-negro: #17140F;
+  --tbg-arena: #EFE6D2;
+
+  --tbg-fondo: var(--tbg-arena);
+  --tbg-texto: var(--tbg-negro);          /* 14,8:1 */
+  --tbg-primario: var(--tbg-verde);       /* solo decoración sobre arena (2,4:1) */
+  --tbg-acento: var(--tbg-marron);        /* bordes (3,7:1) */
+  --tbg-enlace: var(--tbg-marron-oscuro); /* 8,4:1 */
+  --tbg-borde: var(--tbg-marron);
+
+  --tbg-fuente-titulos: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --tbg-fuente-detalles: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
@@ -13,28 +45,52 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 17px/1.6 Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--tbg-fondo);
+  color: var(--tbg-texto);
+  font: 17px/1.6 var(--tbg-fuente-titulos);
+  border-top: 6px solid var(--tbg-primario);
 }
 
-main { max-width: 720px; margin: 0 auto; padding: 32px 20px 56px; }
+main { max-width: 720px; margin: 0 auto; padding: 28px 20px 56px; }
 
+/* Encabezado del inicio: logo horizontal, 72 px de alto (mínimo 64, MARCA.md) */
+.marca { margin: 0 0 20px; line-height: 0; }
+.marca .logo { display: block; height: 72px; width: auto; max-width: 100%; }
+
+/* Encabezado de las demás páginas: ícono simple de 40 px más el nombre */
+.marca-chica { margin: 0 0 24px; }
+.marca-chica a { display: inline-flex; align-items: center; gap: 10px; color: var(--tbg-texto); text-decoration: none; font-weight: 700; font-size: 18px; }
+.marca-chica a:hover { text-decoration: underline; }
+.marca-chica img { width: 40px; height: 40px; display: block; }
+
+h1, h2 { font-weight: 700; }
 h1 { font-size: 28px; line-height: 1.25; margin: 0 0 8px; }
 h2 { font-size: 21px; line-height: 1.3; margin: 36px 0 8px; }
 
-p, li { color: var(--text); }
-.muted { color: var(--muted); }
+.muted { font-family: var(--tbg-fuente-detalles); font-size: 14px; }
 
-a { color: var(--accent); text-underline-offset: 3px; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+a { color: var(--tbg-enlace); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--tbg-marron-oscuro); outline-offset: 2px; border-radius: 2px; }
 
 ul { padding-left: 22px; }
 li + li { margin-top: 6px; }
 
-.resumen { background: var(--panel); border-radius: 14px; padding: 14px 18px; margin: 20px 0; }
+.resumen {
+  border: 2px solid var(--tbg-borde);
+  border-left: 8px solid var(--tbg-primario);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin: 20px 0;
+}
 
 .juegos { list-style: none; padding: 0; }
-.juegos li { background: var(--panel); border-radius: 14px; padding: 14px 18px; }
+.juegos li { border: 2px solid var(--tbg-borde); border-radius: 14px; padding: 14px 18px; }
+.juegos strong { font-size: 19px; }
 
-footer { margin-top: 48px; font-size: 15px; color: var(--muted); }
+footer {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 2px solid var(--tbg-borde);
+  font-family: var(--tbg-fuente-detalles);
+  font-size: 14px;
+}
